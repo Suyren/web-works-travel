@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>旅遊資訊</title>
+	<link rel="stylesheet" href="css/all.css">
+	<!-- <script src="js/data.js"></script> -->
+</head>
+<body>
+	<div id="app">
+		<div class="search">
+			<img src="assets/Hero.png">
+			<h1>高雄旅遊資訊</h1>
+			<select id="area" v-model="area" @change="areaFliter">
+				<option value="" class="select-ph">--請選擇行政區--</option>
+				<option value="苓雅區">苓雅區</option>
+				<option value="三民區">三民區</option>
+				<option value="新興區">新興區</option>
+				<option value="鹽埕區">鹽埕區</option>
+			</select>
+		</div>
+		<div class="hot-area">
+			<h2>熱門行政區</h2>
+			<ul class="area-name">
+				<br>
+				<li class="purple"><a href="#" @click.prevent="area='苓雅區',areaFliter()">苓雅區</a></li>
+				<li class="orange"><a href="#" @click.prevent="area='三民區',areaFliter()">三民區</a></li>
+				<li class="yellow"><a href="#" @click.prevent="area='新興區',areaFliter()">新興區</a></li>
+				<li class="blue"><a href="#" @click.prevent="area='鹽埕區',areaFliter()">鹽埕區</a></li>
+			</ul>
+			<div class="clearfix"></div>
+			<br>
+		</div>
+		<div class="clearfix"></div>
+		<hr>
+		<br>
+		<p class="area-title"></p>
+		<br>
+		<ul class="tour">
+			<li v-for="item in filterData">
+				<div class="float">
+					<img :src="item.Picture1">
+					<p class="tour-name">{{item.Name}}</p>
+					<p class="tour-area">{{item.Zone}}</p>
+					<div class="tour-data">
+						<img src="assets/icons_clock.png">
+						<span>{{item.Opentime}}</span>
+						<br>
+						<img src="assets/icons_pin.png">
+						<span>{{item.Add}}</span>
+						<br>
+						<img src="assets/icons_phone.png">
+						<span class="fix">{{item.Tel}}</span>
+						<div class="fix2">
+							<img src="assets/icons_tag.png">
+							<span>{{item.Ticketinfo}}</span>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="clearfix"></div>
+		<div class="footer">
+			<div class="footer-data">
+				<p class="white fz-2">高雄旅遊網</p>
+				<p class="pt-2 yellow fz-2">資料來源：高雄市政府</p>
+			</div>
+		</div>
+	</div>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="js/all.js"></script>
+</body>
+</html>
+
