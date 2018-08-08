@@ -13,10 +13,7 @@
 			<h1>高雄旅遊資訊</h1>
 			<select id="area" v-model="area" @change="areaFliter">
 				<option value="" class="select-ph">--請選擇行政區--</option>
-				<option value="苓雅區">苓雅區</option>
-				<option value="三民區">三民區</option>
-				<option value="新興區">新興區</option>
-				<option value="鹽埕區">鹽埕區</option>
+				<option  v-for="zone in arrayArea" :value="zone">{{zone}}</option>
 			</select>
 		</div>
 		<div class="hot-area">

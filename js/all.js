@@ -4,6 +4,7 @@ var app = new Vue({
 	data:{
 		ajaxData:[],
 		area:"",
+		arrayArea:[],
 		filterData:[],
 	},
 	created(){
@@ -13,6 +14,16 @@ var app = new Vue({
 			// console.log(response);
 			// console.log(response.data.result.records);
 			vm.ajaxData = response.data.result.records;
+			var zone = response.data.result.records.map(function(arrayName){
+				return arrayName.Zone;
+			});
+			// console.log(zone);
+			zone.forEach(function(value){
+				if(vm.arrayArea.indexOf(value) == -1){
+					vm.arrayArea.push(value);
+				}
+			});
+			// console.log(vm.arrayArea);
 		})
 		.catch(function (error) {
 			console.log(error);
